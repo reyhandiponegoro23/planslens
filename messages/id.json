@@ -1,0 +1,118 @@
+{
+  "meta": {
+    "description": "Kenali tanaman dan konsultasikan masalahnya dengan AI dari sebuah foto."
+  },
+  "nav": {
+    "home": "Konsultasi",
+    "history": "Riwayat",
+    "profile": "Profil",
+    "mainLabel": "Navigasi utama"
+  },
+  "common": {
+    "loading": "Memuat…",
+    "cancel": "Batal",
+    "confirm": "Ya, lanjutkan",
+    "delete": "Hapus",
+    "back": "Kembali",
+    "close": "Tutup",
+    "retry": "Coba lagi",
+    "more": "Menu lainnya"
+  },
+  "home": {
+    "title": "Kenali Tanamanmu Lebih Dekat",
+    "subtitle": "Foto tanaman, ajukan pertanyaan, dan dapatkan panduan perawatan dengan bantuan AI.",
+    "examplesTitle": "Contoh pertanyaan:",
+    "example1": "Kenapa daunnya menguning?",
+    "example2": "Bagaimana cara merawatnya?",
+    "example3": "Apakah ini penyakit?",
+    "example4": "Tanaman apa ini?",
+    "answerLanguage": "AI akan menjawab dalam {language}.",
+    "languageMenu": "Bahasa antarmuka"
+  },
+  "camera": {
+    "takePhoto": "Ambil Foto",
+    "gallery": "Pilih dari Galeri",
+    "selected": "Foto yang dipilih",
+    "removePhoto": "Hapus foto",
+    "changePhoto": "Ganti foto",
+    "capture": "Ambil foto",
+    "closeCamera": "Tutup kamera",
+    "starting": "Menyalakan kamera…",
+    "previewAlt": "Foto tanaman",
+    "hint": "Tips: foto daun atau bagian yang bermasalah dari dekat, dengan cahaya terang dan latar yang tidak ramai.",
+    "uploadHint": "Format JPG, PNG, atau WEBP, maksimal 10 MB.",
+    "permissionDenied": "Akses kamera ditolak. Izinkan kamera di pengaturan browser atau pilih foto dari galeri.",
+    "unavailable": "Kamera tidak tersedia di perangkat ini. Silakan pilih foto dari galeri.",
+    "invalidFile": "File harus berupa gambar JPG, PNG, atau WEBP.",
+    "fileTooLarge": "Ukuran foto melebihi 10 MB."
+  },
+  "consult": {
+    "questionLabel": "Pertanyaan",
+    "questionPlaceholder": "Tanyakan sesuatu tentang tanaman ini…",
+    "followUpPlaceholder": "Tulis pesan…",
+    "send": "Kirim",
+    "analyzing": "AI sedang menganalisis foto…",
+    "thinking": "AI sedang menyusun jawaban…",
+    "you": "Kamu",
+    "assistant": "PlantLens AI",
+    "needPhoto": "Tambahkan foto tanaman terlebih dahulu.",
+    "needQuestion": "Tulis pertanyaanmu terlebih dahulu.",
+    "languageBadge": "Bahasa konsultasi: {language}",
+    "disclaimer": "Jawaban AI bisa keliru. Untuk masalah serius, konsultasikan dengan penyuluh pertanian.",
+    "enterHint": "Enter untuk kirim, Shift+Enter untuk baris baru.",
+    "menu": "Menu konsultasi"
+  },
+  "history": {
+    "title": "Riwayat Konsultasi",
+    "searchPlaceholder": "Cari konsultasi…",
+    "searchLabel": "Cari konsultasi",
+    "noResults": "Tidak ada konsultasi yang cocok dengan “{query}”.",
+    "empty": "Belum ada konsultasi.",
+    "emptyHint": "Mulai dengan mengambil foto tanaman.",
+    "startNow": "Mulai konsultasi",
+    "deleteTitle": "Hapus konsultasi?",
+    "deleteBody": "Konsultasi ini beserta fotonya akan dihapus dari perangkat ini dan tidak bisa dikembalikan.",
+    "deleted": "Konsultasi dihapus.",
+    "notFound": "Konsultasi tidak ditemukan.",
+    "originalLanguageNote": "Percakapan ditampilkan dalam bahasa aslinya.",
+    "localNote": "Riwayat disimpan di perangkat ini saja."
+  },
+  "profile": {
+    "title": "Profil",
+    "guestName": "Pengguna Tamu",
+    "guestNote": "Data tersimpan di perangkat ini",
+    "settings": "Pengaturan",
+    "language": "Bahasa",
+    "theme": "Tema",
+    "about": "Tentang",
+    "aboutApp": "Tentang PlantLens AI",
+    "privacy": "Kebijakan Privasi",
+    "terms": "Syarat Penggunaan",
+    "help": "Bantuan",
+    "languageDescription": "Mengatur bahasa antarmuka dan bahasa jawaban AI untuk konsultasi baru.",
+    "activeLanguage": "Bahasa aktif",
+    "languageSaved": "Bahasa diubah ke {language}.",
+    "languageNote": "Konsultasi lama tetap ditampilkan dalam bahasa aslinya.",
+    "themeDescription": "Pilih tampilan terang, gelap, atau ikuti pengaturan perangkat.",
+    "themeLight": "Terang",
+    "themeDark": "Gelap",
+    "themeSystem": "Ikuti perangkat"
+  },
+  "pages": {
+    "aboutBody": "PlantLens AI membantu petani dan pehobi tanaman mengenali tanaman, penyakit, hama, dan cara perawatannya hanya dari sebuah foto.\n\nAmbil foto bagian tanaman yang bermasalah, ajukan pertanyaan, lalu lanjutkan percakapan sampai jelas. Jawaban dibuat oleh AI dan sebaiknya dipakai sebagai panduan awal.",
+    "privacyBody": "Saat ini PlantLens AI tidak memakai akun atau database. Riwayat konsultasi dan fotonya hanya disimpan di browser perangkat ini.\n\nSaat kamu mengirim pertanyaan, foto dan percakapan dikirim ke layanan AI (OpenAI) untuk dibuatkan jawaban. Data itu tidak disimpan di server PlantLens AI.\n\nKamu bisa menghapus konsultasi kapan saja, atau menghapus data browser untuk menghapus semuanya.",
+    "termsBody": "Jawaban PlantLens AI dibuat oleh AI dan bisa keliru. Gunakan sebagai panduan, bukan pengganti saran ahli.\n\nUntuk penggunaan pestisida, selalu ikuti label produk dan aturan setempat. Untuk masalah serius atau kerugian besar, konsultasikan dengan penyuluh pertanian.\n\nJangan mengunggah foto yang berisi data pribadi orang lain.",
+    "helpBody": "1. Di halaman Konsultasi, ketuk Ambil Foto atau Pilih dari Galeri.\n2. Tulis pertanyaan atau pilih contoh pertanyaan, lalu ketuk tombol kirim (atau tekan Enter di komputer).\n3. Lanjutkan percakapan dengan pertanyaan tambahan di halaman chat.\n4. Semua konsultasi tersimpan di Riwayat. Gunakan kolom cari untuk menemukannya.\n\nKamera tidak muncul? Izinkan akses kamera di browser, atau pilih foto dari galeri.\nBahasa jawaban mengikuti bahasa yang dipilih di Profil saat konsultasi dimulai."
+  },
+  "errors": {
+    "badRequest": "Permintaan tidak valid.",
+    "aiFailed": "AI gagal menjawab. Coba lagi sebentar lagi.",
+    "network": "Koneksi bermasalah. Periksa internetmu.",
+    "notConfigured": "Server belum dikonfigurasi (kunci AI belum diisi).",
+    "generic": "Terjadi kesalahan tak terduga.",
+    "storageFailed": "Gagal menyimpan atau membaca riwayat di perangkat ini.",
+    "pageTitle": "Ada yang salah",
+    "notFoundPage": "Halaman tidak ditemukan.",
+    "goHome": "Kembali ke beranda"
+  }
+}
