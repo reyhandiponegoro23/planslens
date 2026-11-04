@@ -14,9 +14,12 @@ export default function EmailLogin({ next = "/schedule" }: { next?: string }) {
     e.preventDefault();
     if (!/^\S+@\S+\.\S+$/.test(email.trim())) return setState("error");
     setState("sending");
+    document.cookie = `plantlens_next=${encodeURIComponent(next)}; path=/; max-age=3600; samesite=lax`;
     const { error } = await createClient().auth.signInWithOtp({
       email: email.trim(),
-      options: { emailRedirectTo: `${location.origin}/auth/callback?next=${encodeURIComponent(next)}` },
+      // No query string: Supabase only honours a redirect that exactly matches its allow-list,
+      // otherwise it falls back to the Site URL. Where to land afterwards travels in a cookie.
+      options: { emailRedirectTo: `${location.origin}/auth/callback` },
     });
     setState(error ? "error" : "sent");
   }
