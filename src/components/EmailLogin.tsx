@@ -19,7 +19,7 @@ export default function EmailLogin({ next = "/schedule" }: { next?: string }) {
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
   const [busy, setBusy] = useState(false);
-  const [error, setError] = useState<"send" | "code" | null>(null);
+  const [error, setError] = useState<"send" | "rate" | "code" | null>(null);
 
   async function sendCode(e?: React.FormEvent) {
     e?.preventDefault();
@@ -35,7 +35,8 @@ export default function EmailLogin({ next = "/schedule" }: { next?: string }) {
       options: { shouldCreateUser: true, emailRedirectTo: `${location.origin}/auth/callback` },
     });
     setBusy(false);
-    if (error) return setError("send");
+    // Supabase's built-in mailer allows only a few emails per hour per project.
+    if (error) return setError(error.status === 429 || error.code === "over_email_send_rate_limit" ? "rate" : "send");
     setCode("");
     setStep("code");
   }
@@ -105,6 +106,7 @@ export default function EmailLogin({ next = "/schedule" }: { next?: string }) {
         />
       </label>
       {error === "send" && <p className="alert alert-error" role="alert">{t("sendFailed")}</p>}
+      {error === "rate" && <p className="alert alert-error" role="alert">{t("rateLimited")}</p>}
       <button className="btn btn-primary" disabled={busy}>
         {busy ? <><span className="spinner" aria-hidden /> {t("sending")}</> : t("sendCode")}
       </button>

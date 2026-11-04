@@ -125,7 +125,7 @@
     "email": "Email",
     "emailPlaceholder": "nama@contoh.com",
     "sending": "Mengirim…",
-    "sendFailed": "Gagal mengirim link. Periksa alamat email atau coba lagi beberapa menit lagi.",
+    "sendFailed": "Gagal mengirim email masuk. Periksa alamat email lalu coba lagi.",
     "linkFailed": "Link masuk tidak valid atau sudah kedaluwarsa. Minta link baru.",
     "notConfigured": "Login belum dikonfigurasi di server.",
     "later": "Nanti saja",
@@ -137,7 +137,8 @@
     "verify": "Masuk",
     "verifying": "Memeriksa…",
     "resend": "Kirim ulang kode",
-    "changeEmail": "Ganti email"
+    "changeEmail": "Ganti email",
+    "rateLimited": "Terlalu banyak permintaan email. Batas pengiriman sedang penuh, coba lagi sekitar 1 jam lagi."
   },
   "schedule": {
     "title": "Jadwal Pertanian",
