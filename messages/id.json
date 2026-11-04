@@ -121,18 +121,23 @@
   },
   "auth": {
     "title": "Masuk ke PlantLens AI",
-    "subtitle": "Masukkan email. Kami kirim link untuk masuk, tanpa kata sandi.",
+    "subtitle": "Masukkan email. Kami kirim kode 6 angka untuk masuk, tanpa kata sandi.",
     "email": "Email",
     "emailPlaceholder": "nama@contoh.com",
-    "sendLink": "Kirim link masuk",
     "sending": "Mengirim…",
     "sendFailed": "Gagal mengirim link. Periksa alamat email atau coba lagi beberapa menit lagi.",
-    "checkTitle": "Cek email kamu",
-    "checkBody": "Kami mengirim link masuk ke {email}. Buka email itu di perangkat ini lalu klik link-nya. Cek juga folder Spam.",
     "linkFailed": "Link masuk tidak valid atau sudah kedaluwarsa. Minta link baru.",
     "notConfigured": "Login belum dikonfigurasi di server.",
     "later": "Nanti saja",
-    "note": "Login dipakai untuk menyimpan jadwal pertanian secara online. Riwayat konsultasi tetap di perangkat ini."
+    "note": "Login dipakai untuk menyimpan jadwal pertanian secara online. Riwayat konsultasi tetap di perangkat ini.",
+    "sendCode": "Kirim kode",
+    "codeSent": "Kami sudah mengirim email ke {email}. Ketik kode 6 angka dari email itu di bawah, atau klik link di email tersebut. Cek juga folder Spam.",
+    "codeLabel": "Kode dari email",
+    "codeInvalid": "Kode salah atau sudah kedaluwarsa. Periksa lagi, atau kirim ulang kode.",
+    "verify": "Masuk",
+    "verifying": "Memeriksa…",
+    "resend": "Kirim ulang kode",
+    "changeEmail": "Ganti email"
   },
   "schedule": {
     "title": "Jadwal Pertanian",

@@ -307,3 +307,5 @@ select.text-input { appearance: auto; }
 .check.checked { background: var(--primary); }
 .profile-actions { display: flex; flex-wrap: wrap; gap: 10px; }
 @media (max-width: 480px) { .schedule-actions { margin-left: 0; width: 100%; } .schedule-actions .btn { flex: 1; } }
+
+.code-input { font-size: 1.5rem; letter-spacing: 0.4em; text-align: center; font-variant-numeric: tabular-nums; }

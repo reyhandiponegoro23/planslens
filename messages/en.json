@@ -121,18 +121,23 @@
   },
   "auth": {
     "title": "Sign in to PlantLens AI",
-    "subtitle": "Enter your email. We’ll send a sign-in link, no password needed.",
+    "subtitle": "Enter your email. We’ll send a 6-digit code to sign in, no password needed.",
     "email": "Email",
     "emailPlaceholder": "name@example.com",
-    "sendLink": "Send sign-in link",
     "sending": "Sending…",
     "sendFailed": "Couldn’t send the link. Check the email address or try again in a few minutes.",
-    "checkTitle": "Check your email",
-    "checkBody": "We sent a sign-in link to {email}. Open it on this device and tap the link. Check your Spam folder too.",
     "linkFailed": "The sign-in link is invalid or has expired. Request a new one.",
     "notConfigured": "Sign-in isn’t configured on the server yet.",
     "later": "Not now",
-    "note": "Signing in stores your farm schedule online. Consultation history stays on this device."
+    "note": "Signing in stores your farm schedule online. Consultation history stays on this device.",
+    "sendCode": "Send code",
+    "codeSent": "We emailed {email}. Type the 6-digit code from that email below, or tap the link in it. Check your Spam folder too.",
+    "codeLabel": "Code from the email",
+    "codeInvalid": "The code is wrong or has expired. Check it again, or resend the code.",
+    "verify": "Sign in",
+    "verifying": "Checking…",
+    "resend": "Resend code",
+    "changeEmail": "Use a different email"
   },
   "schedule": {
     "title": "Farm Schedule",
