@@ -81,7 +81,7 @@ h2 { margin: 0; }
   position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
   width: 100%; max-width: 480px; height: calc(var(--nav-h) + env(safe-area-inset-bottom));
   padding-bottom: env(safe-area-inset-bottom);
-  display: grid; grid-template-columns: repeat(3, 1fr);
+  display: grid; grid-template-columns: repeat(4, 1fr);
   background: var(--surface); border-top: 1px solid var(--border); z-index: 20;
 }
 .bottom-nav-item { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; font-size: 0.78rem; color: var(--muted); text-decoration: none; }
@@ -272,3 +272,38 @@ textarea, input[type="search"] { font: inherit; color: var(--text); width: 100%;
 @media (min-width: 1024px) {
   .profile-grid { display: grid; }
 }
+
+/* Shared form bits */
+.stack-lg { display: flex; flex-direction: column; gap: 20px; }
+.h3 { font-size: 1.05rem; margin: 0; }
+.field { display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 0.92rem; flex: 1; min-width: 0; }
+.text-input { font: inherit; font-weight: 400; color: var(--text); width: 100%; padding: 11px 14px; border-radius: 12px; border: 1px solid var(--border); background: var(--bg); }
+.text-input:focus { outline: 2px solid var(--primary); outline-offset: 1px; }
+select.text-input { appearance: auto; }
+.form-row { display: flex; gap: 12px; flex-wrap: wrap; }
+.alert-info { background: var(--primary-soft); color: var(--primary-strong); }
+.text-danger { color: var(--danger); }
+.chip-active { background: var(--primary); color: var(--on-primary); }
+.link-button { background: none; border: none; color: var(--primary); cursor: pointer; padding: 0; text-align: left; font: inherit; }
+
+/* Email login */
+.login-page { min-height: 100dvh; justify-content: center; }
+.login-card { display: flex; flex-direction: column; align-items: stretch; gap: 14px; text-align: center; padding: 28px 22px; }
+.login-card p { margin: 0; }
+.login-card .field { text-align: left; }
+.login-logo { width: 64px; height: 64px; margin: 0 auto 4px; }
+.btn-soft { background: var(--surface-2); color: var(--text); }
+
+/* Jadwal */
+.schedule-summary { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 28px; }
+.schedule-summary > div:not(.schedule-actions) { display: flex; flex-direction: column; }
+.big-number { font-size: 1.8rem; line-height: 1.1; color: var(--primary-strong); }
+.schedule-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-left: auto; }
+.schedule-row { display: flex; align-items: flex-start; gap: 12px; padding: 12px 10px 12px 14px; }
+.schedule-row.is-done .schedule-text strong { text-decoration: line-through; color: var(--muted); }
+.schedule-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.schedule-note { white-space: pre-wrap; overflow-wrap: anywhere; }
+.check { width: 26px; height: 26px; flex: none; margin-top: 1px; border-radius: 8px; border: 2px solid var(--primary); background: var(--surface); color: var(--on-primary); display: grid; place-items: center; cursor: pointer; padding: 0; }
+.check.checked { background: var(--primary); }
+.profile-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+@media (max-width: 480px) { .schedule-actions { margin-left: 0; width: 100%; } .schedule-actions .btn { flex: 1; } }

@@ -3,10 +3,11 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { ClockIcon, ConsultIcon, LeafIcon, UserIcon } from "./Icons";
+import { CalendarIcon, ClockIcon, ConsultIcon, LeafIcon, UserIcon } from "./Icons";
 
 const items = [
   { href: "/", key: "home", Icon: ConsultIcon, match: (p: string) => p === "/" },
+  { href: "/schedule", key: "schedule", Icon: CalendarIcon, match: (p: string) => p.startsWith("/schedule") },
   { href: "/history", key: "history", Icon: ClockIcon, match: (p: string) => p.startsWith("/history") },
   { href: "/profile", key: "profile", Icon: UserIcon, match: (p: string) => p.startsWith("/profile") },
 ] as const;

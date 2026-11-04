@@ -6,7 +6,8 @@
     "home": "Konsultasi",
     "history": "Riwayat",
     "profile": "Profil",
-    "mainLabel": "Navigasi utama"
+    "mainLabel": "Navigasi utama",
+    "schedule": "Jadwal"
   },
   "common": {
     "loading": "Memuat…",
@@ -96,7 +97,10 @@
     "themeDescription": "Pilih tampilan terang, gelap, atau ikuti pengaturan perangkat.",
     "themeLight": "Terang",
     "themeDark": "Gelap",
-    "themeSystem": "Ikuti perangkat"
+    "themeSystem": "Ikuti perangkat",
+    "signIn": "Masuk dengan email",
+    "signOut": "Keluar",
+    "signedInNote": "Jadwal tersinkron di semua perangkat"
   },
   "pages": {
     "aboutBody": "PlantLens AI membantu petani dan pehobi tanaman mengenali tanaman, penyakit, hama, dan cara perawatannya hanya dari sebuah foto.\n\nAmbil foto bagian tanaman yang bermasalah, ajukan pertanyaan, lalu lanjutkan percakapan sampai jelas. Jawaban dibuat oleh AI dan sebaiknya dipakai sebagai panduan awal.",
@@ -114,5 +118,77 @@
     "pageTitle": "Ada yang salah",
     "notFoundPage": "Halaman tidak ditemukan.",
     "goHome": "Kembali ke beranda"
+  },
+  "auth": {
+    "title": "Masuk ke PlantLens AI",
+    "subtitle": "Masukkan email. Kami kirim link untuk masuk, tanpa kata sandi.",
+    "email": "Email",
+    "emailPlaceholder": "nama@contoh.com",
+    "sendLink": "Kirim link masuk",
+    "sending": "Mengirim…",
+    "sendFailed": "Gagal mengirim link. Periksa alamat email atau coba lagi beberapa menit lagi.",
+    "checkTitle": "Cek email kamu",
+    "checkBody": "Kami mengirim link masuk ke {email}. Buka email itu di perangkat ini lalu klik link-nya. Cek juga folder Spam.",
+    "linkFailed": "Link masuk tidak valid atau sudah kedaluwarsa. Minta link baru.",
+    "notConfigured": "Login belum dikonfigurasi di server.",
+    "later": "Nanti saja",
+    "note": "Login dipakai untuk menyimpan jadwal pertanian secara online. Riwayat konsultasi tetap di perangkat ini."
+  },
+  "schedule": {
+    "title": "Jadwal Pertanian",
+    "subtitle": "Atur kegiatan tanam, pupuk, semprot, dan panen.",
+    "dueNow": "perlu dikerjakan",
+    "pending": "jadwal aktif",
+    "add": "Tambah jadwal",
+    "exportAll": "Simpan ke kalender",
+    "exportOne": "Simpan ke kalender HP",
+    "addTitle": "Jadwal baru",
+    "activity": "Jenis kegiatan",
+    "activities": {
+      "tanam": "Tanam",
+      "pupuk": "Pupuk",
+      "semprot": "Semprot",
+      "siram": "Siram",
+      "panen": "Panen",
+      "lainnya": "Lainnya"
+    },
+    "titleLabel": "Kegiatan",
+    "titlePlaceholder": "Contoh: Pupuk urea 50 kg",
+    "fieldLabel": "Lahan / tanaman (opsional)",
+    "fieldPlaceholder": "Contoh: Sawah blok A, cabai",
+    "dateLabel": "Tanggal",
+    "repeatLabel": "Ulangi",
+    "repeatNone": "Tidak diulang",
+    "repeatEvery": "Tiap {days} hari",
+    "noteLabel": "Catatan (opsional)",
+    "notePlaceholder": "Takaran, merek, atau hal lain yang perlu diingat",
+    "save": "Simpan",
+    "cancel": "Batal",
+    "saved": "Jadwal disimpan.",
+    "saveFailed": "Gagal menyimpan. Periksa koneksi lalu coba lagi.",
+    "loadFailed": "Gagal memuat jadwal. Coba muat ulang halaman.",
+    "markDone": "Tandai selesai",
+    "markUndone": "Tandai belum selesai",
+    "markedDone": "Ditandai selesai.",
+    "nextCreated": "Selesai. Jadwal berikutnya dibuat untuk {date}.",
+    "deleted": "Jadwal dihapus.",
+    "delete": "Hapus",
+    "deleteTitle": "Hapus jadwal?",
+    "deleteBody": "Jadwal ini akan dihapus dari akunmu dan tidak bisa dikembalikan.",
+    "today": "Hari ini",
+    "groups": {
+      "overdue": "Terlambat",
+      "today": "Hari ini",
+      "week": "7 hari ke depan",
+      "later": "Nanti",
+      "done": "Selesai"
+    },
+    "empty": "Belum ada jadwal.",
+    "emptyHint": "Tambahkan kegiatan pertama, misalnya jadwal pemupukan.",
+    "reminderNote": "Tips: ketuk 📅 untuk menyimpan jadwal ke kalender HP, supaya HP mengingatkan pada jam 07.00 di hari itu.",
+    "loginTitle": "Masuk untuk memakai Jadwal",
+    "loginBody": "Jadwal disimpan online di akunmu, jadi bisa dibuka dari HP maupun laptop.",
+    "loginCta": "Masuk dengan email",
+    "notConfigured": "Database jadwal belum dikonfigurasi di server."
   }
 }

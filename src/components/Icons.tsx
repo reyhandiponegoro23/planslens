@@ -152,3 +152,9 @@ export const LogoutIcon = (p: P) => (
     <path d="M14 4h5v16h-5M10 8l-4 4 4 4M6 12h10" />
   </Svg>
 );
+export const CalendarIcon = (p: P) => (
+  <Svg {...p}>
+    <rect x="4" y="5" width="16" height="15" rx="2" />
+    <path d="M4 10h16M9 3v4M15 3v4M9 14l2 2 4-4" />
+  </Svg>
+);
