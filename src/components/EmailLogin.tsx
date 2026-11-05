@@ -5,111 +5,103 @@ import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { createClient } from "@/lib/supabase/client";
 
-type Step = "email" | "code";
+type Mode = "signIn" | "signUp";
+type ErrorKey = "invalidEmail" | "weakPassword" | "invalidCredentials" | "userExists" | "confirmStillOn" | "genericError";
+
+const MIN_PASSWORD = 8;
 
 /**
- * Passwordless sign-in with a one-time code: Supabase emails a short code (see the
- * "Magic Link" email template), the user types it here. No link, so no redirect URLs to get wrong,
- * and the email can be read on a different device than the one signing in.
+ * Email + password sign-in. No email is sent: Supabase's "Confirm email" setting must be off,
+ * otherwise sign-up returns no session (we explain that instead of failing silently).
  */
 export default function EmailLogin({ next = "/schedule" }: { next?: string }) {
   const t = useTranslations("auth");
   const router = useRouter();
-  const [step, setStep] = useState<Step>("email");
+  const [mode, setMode] = useState<Mode>("signIn");
   const [email, setEmail] = useState("");
-  const [code, setCode] = useState("");
+  const [password, setPassword] = useState("");
+  const [show, setShow] = useState(false);
   const [busy, setBusy] = useState(false);
-  const [error, setError] = useState<"send" | "rate" | "code" | null>(null);
+  const [error, setError] = useState<ErrorKey | null>(null);
 
-  async function sendCode(e?: React.FormEvent) {
-    e?.preventDefault();
-    const address = email.trim();
-    if (!/^\S+@\S+\.\S+$/.test(address)) return setError("send");
-    setBusy(true);
-    setError(null);
-    // The same email carries a link too (Supabase's default template has no code): keep it working.
-    // No query string, so it matches the redirect allow-list; where to land goes in a cookie.
-    document.cookie = `plantlens_next=${encodeURIComponent(next)}; path=/; max-age=3600; samesite=lax`;
-    const { error } = await createClient().auth.signInWithOtp({
-      email: address,
-      options: { shouldCreateUser: true, emailRedirectTo: `${location.origin}/auth/callback` },
-    });
-    setBusy(false);
-    // Supabase's built-in mailer allows only a few emails per hour per project.
-    if (error) return setError(error.status === 429 || error.code === "over_email_send_rate_limit" ? "rate" : "send");
-    setCode("");
-    setStep("code");
-  }
-
-  async function verify(e: React.FormEvent) {
-    e.preventDefault();
-    const token = code.replace(/\D/g, "");
-    if (token.length < 6) return setError("code");
-    setBusy(true);
-    setError(null);
-    const { error } = await createClient().auth.verifyOtp({ email: email.trim(), token, type: "email" });
-    if (error) {
-      setBusy(false);
-      return setError("code");
-    }
+  function done() {
     const target = next.startsWith("/") && !next.startsWith("//") ? next : "/schedule";
     router.replace(target);
     router.refresh();
   }
 
-  if (step === "code") {
-    return (
-      <form className="stack" onSubmit={verify}>
-        <p className="alert alert-info" role="status">{t("codeSent", { email: email.trim() })}</p>
-        <label className="field">
-          <span>{t("codeLabel")}</span>
-          <input
-            className="text-input code-input"
-            inputMode="numeric"
-            autoComplete="one-time-code"
-            maxLength={10}
-            autoFocus
-            required
-            value={code}
-            onChange={(e) => setCode(e.target.value.replace(/\D/g, ""))}
-            placeholder="123456"
-          />
-        </label>
-        {error === "code" && <p className="alert alert-error" role="alert">{t("codeInvalid")}</p>}
-        <button className="btn btn-primary" disabled={busy}>
-          {busy ? <><span className="spinner" aria-hidden /> {t("verifying")}</> : t("verify")}
-        </button>
-        <div className="row" style={{ justifyContent: "space-between" }}>
-          <button type="button" className="link-button small" onClick={() => { setStep("email"); setError(null); }}>
-            {t("changeEmail")}
-          </button>
-          <button type="button" className="link-button small" disabled={busy} onClick={() => sendCode()}>
-            {t("resend")}
-          </button>
-        </div>
-      </form>
-    );
+  async function submit(e: React.FormEvent) {
+    e.preventDefault();
+    const address = email.trim();
+    if (!/^\S+@\S+\.\S+$/.test(address)) return setError("invalidEmail");
+    if (password.length < MIN_PASSWORD) return setError("weakPassword");
+    setBusy(true);
+    setError(null);
+    const auth = createClient().auth;
+
+    if (mode === "signIn") {
+      const { error } = await auth.signInWithPassword({ email: address, password });
+      if (!error) return done();
+      setBusy(false);
+      return setError(error.code === "invalid_credentials" || error.status === 400 ? "invalidCredentials" : "genericError");
+    }
+
+    const { data, error } = await auth.signUp({ email: address, password });
+    if (error) {
+      setBusy(false);
+      if (error.code === "user_already_exists") return setError("userExists");
+      if (error.code === "weak_password") return setError("weakPassword");
+      return setError("genericError");
+    }
+    if (!data.session) {
+      // "Confirm email" is still on in Supabase, so it wants to email a link we don't use.
+      setBusy(false);
+      return setError("confirmStillOn");
+    }
+    done();
   }
 
+  const switchTo = (m: Mode) => {
+    setMode(m);
+    setError(null);
+  };
+
   return (
-    <form className="stack" onSubmit={sendCode}>
+    <form className="stack" onSubmit={submit}>
+      <div className="segmented" role="tablist" aria-label={t("modeLabel")}>
+        {(["signIn", "signUp"] as const).map((m) => (
+          <button key={m} type="button" role="tab" aria-selected={mode === m} className={mode === m ? "is-active" : ""} onClick={() => switchTo(m)}>
+            {t(m === "signIn" ? "signInTab" : "signUpTab")}
+          </button>
+        ))}
+      </div>
       <label className="field">
         <span>{t("email")}</span>
-        <input
-          className="text-input"
-          type="email"
-          autoComplete="email"
-          required
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder={t("emailPlaceholder")}
-        />
+        <input className="text-input" type="email" autoComplete="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder={t("emailPlaceholder")} />
       </label>
-      {error === "send" && <p className="alert alert-error" role="alert">{t("sendFailed")}</p>}
-      {error === "rate" && <p className="alert alert-error" role="alert">{t("rateLimited")}</p>}
+      <label className="field">
+        <span>{t("password")}</span>
+        <div className="password-wrap">
+          <input
+            className="text-input"
+            type={show ? "text" : "password"}
+            autoComplete={mode === "signIn" ? "current-password" : "new-password"}
+            required
+            minLength={MIN_PASSWORD}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder={t("passwordPlaceholder")}
+          />
+          <button type="button" className="link-button small password-toggle" onClick={() => setShow((s) => !s)}>
+            {show ? t("hidePassword") : t("showPassword")}
+          </button>
+        </div>
+      </label>
+      {error && <p className="alert alert-error" role="alert">{t(error)}</p>}
       <button className="btn btn-primary" disabled={busy}>
-        {busy ? <><span className="spinner" aria-hidden /> {t("sending")}</> : t("sendCode")}
+        {busy ? <span className="spinner" aria-hidden /> : null} {t(mode === "signIn" ? "signInButton" : "signUpButton")}
       </button>
+      {mode === "signUp" && <p className="muted small" style={{ margin: 0 }}>{t("rememberPassword")}</p>}
     </form>
   );
 }

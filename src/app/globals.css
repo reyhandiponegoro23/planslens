@@ -309,3 +309,11 @@ select.text-input { appearance: auto; }
 @media (max-width: 480px) { .schedule-actions { margin-left: 0; width: 100%; } .schedule-actions .btn { flex: 1; } }
 
 .code-input { font-size: 1.5rem; letter-spacing: 0.4em; text-align: center; font-variant-numeric: tabular-nums; }
+
+/* Email + password login */
+.segmented { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; border-radius: 12px; background: var(--surface-2); }
+.segmented button { border: none; background: none; padding: 9px; border-radius: 9px; font: inherit; font-weight: 600; color: var(--muted); cursor: pointer; }
+.segmented button.is-active { background: var(--surface); color: var(--text); box-shadow: var(--shadow); }
+.password-wrap { position: relative; }
+.password-wrap .text-input { padding-right: 96px; }
+.password-toggle { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); }
